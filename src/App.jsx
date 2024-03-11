@@ -66,7 +66,11 @@ function App() {
     return (
         // NOTE: you can use nested property values as components if those values are valid React
         //       components like the Provider property!
-        <CartContext.Provider>
+        //
+        // NOTE: you need to add a "value=" property in <CartContext.Provider>
+        //       The default value set when creating the context is only used if a component that was not wrapped by the Provider
+        //       component triex to access the context value
+        <CartContext.Provider value={{ items: [] }}>
             <Header cart={shoppingCart} onUpdateCartItemQuantity={handleUpdateCartItemQuantity} />
             {/*
                 Component Composition refers to the process of combining smaller,
