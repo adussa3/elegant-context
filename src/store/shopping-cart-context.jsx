@@ -14,4 +14,5 @@ import { createContext } from "react";
 // While small, it makes your life as a developer easier!
 export const CartContext = createContext({
     items: [],
+    addItemToCart: () => {},
 });
