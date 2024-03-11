@@ -2,8 +2,13 @@ import { useContext } from "react";
 import { CartContext } from "../store/shopping-cart-context";
 
 export default function Cart({ onUpdateItemQuantity }) {
-    // useContext gets the object value in CartContext which can by used across multiple components
-    // NOTE: useContext is the standard way for getting access to context in a component
+    /*
+        useContext gets the object value in CartContext which can by used across multiple components
+        NOTE: useContext is the standard way for getting access to context in a component
+
+        NOTE: when the context value changes, the component that accessed the context value
+              will get re-executed by React
+    */
     const { items } = useContext(CartContext);
 
     const totalPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
