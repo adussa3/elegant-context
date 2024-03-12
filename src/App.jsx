@@ -66,6 +66,7 @@ function App() {
     const contextValue = {
         items: shoppingCart.items,
         addItemToCart: handleAddItemToCart,
+        updateCartItemQuantity: handleUpdateCartItemQuantity,
     };
 
     return (
@@ -76,7 +77,7 @@ function App() {
         //       The default value set when creating the context is only used if a component that was not wrapped by the Provider
         //       component triex to access the context value
         <CartContext.Provider value={contextValue}>
-            <Header cart={shoppingCart} onUpdateCartItemQuantity={handleUpdateCartItemQuantity} />
+            <Header />
             {/*
                 Component Composition refers to the process of combining smaller,
                 reusable components together to create larger, more complex components

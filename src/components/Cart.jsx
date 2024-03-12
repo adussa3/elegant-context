@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../store/shopping-cart-context";
 
-export default function Cart({ onUpdateItemQuantity }) {
+export default function Cart() {
     /*
         useContext gets the object value in CartContext which can by used across multiple components
         NOTE: useContext is the standard way for getting access to context in a component
@@ -9,7 +9,7 @@ export default function Cart({ onUpdateItemQuantity }) {
         NOTE: when the context value changes, the component that accessed the context value
               will get re-executed by React
     */
-    const { items } = useContext(CartContext);
+    const { items, updateCartItemQuantity } = useContext(CartContext);
 
     const totalPrice = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
     const formattedTotalPrice = `$${totalPrice.toFixed(2)}`;
@@ -29,9 +29,9 @@ export default function Cart({ onUpdateItemQuantity }) {
                                     <span> ({formattedPrice})</span>
                                 </div>
                                 <div className="cart-item-actions">
-                                    <button onClick={() => onUpdateItemQuantity(item.id, -1)}>-</button>
+                                    <button onClick={() => updateCartItemQuantity(item.id, -1)}>-</button>
                                     <span>{item.quantity}</span>
-                                    <button onClick={() => onUpdateItemQuantity(item.id, 1)}>+</button>
+                                    <button onClick={() => updateCartItemQuantity(item.id, 1)}>+</button>
                                 </div>
                             </li>
                         );
